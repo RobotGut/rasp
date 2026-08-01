@@ -1,725 +1,2219 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rasp — Especialistas em Pisos, Assoalhos e Decks de Madeira</title>
-
-    <meta name="description" content="Especialistas em raspagem, restauração e tratamento de pisos, assoalhos e decks de madeira com acabamento impecável.">
-    <meta property="og:title" content="Rasp — Especialistas em Pisos e Decks de Madeira">
-    <meta property="og:description" content="Devolvemos a vida e o brilho da sua madeira. Solicite um orçamento sem compromisso!">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80">
-    <meta property="og:type" content="website">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS RESET & VARIAVEIS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
-        }
-
-        :root {
-            --primary: #2C1810;       /* Madeira escura / Elegância */
-            --secondary: #C88A4A;     /* Tom amadeirado aquecido */
-            --accent: #E5A967;        /* Destaque dourado/madeira clara */
-            --bg-light: #FBF9F5;      /* Fundo suave off-white */
-            --text-dark: #1A1A1A;
-            --text-muted: #666666;
-            --white: #FFFFFF;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* HEADER & NAVEGAÇÃO */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(251, 249, 245, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(44, 24, 16, 0.08);
-            padding: 1.2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: -1px;
-        }
-
-        .logo span {
-            color: var(--secondary);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            margin-left: 2rem;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--secondary);
-        }
-
-        .btn-header {
-            background-color: var(--primary);
-            color: var(--white) !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 50px;
-            transition: background-color 0.3s !important;
-        }
-
-        .btn-header:hover {
-            background-color: var(--secondary) !important;
-        }
-
-        /* BOTÃO MENU MOBILE */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            margin: 5px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            padding: 10rem 5% 6rem 5%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: transform 0.2s, background-color 0.3s;
-            box-shadow: 0 10px 20px rgba(200, 138, 74, 0.25);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-
-        /* SERVIÇOS */
-        .services {
-            padding: 6rem 5%;
-            background-color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 4rem auto;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background-color: var(--bg-light);
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-
-        .service-icon {
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* ANTES E DEPOIS / GALERIA */
-        .gallery {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .gallery-item {
-            background-color: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .gallery-info {
-            padding: 1.5rem;
-        }
-
-        .gallery-info h4 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .gallery-info p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* DIFERENCIAIS */
-        .features {
-            padding: 6rem 5%;
-            background-color: var(--white);
-        }
-
-        .features-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .feature-icon {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        .feature-item h4 {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-item p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* CONTATO / FORMULÁRIO */
-        .contact-section {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-info h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-
-        .form-group input, 
-        .form-group select, 
-        .form-group textarea {
-            width: 100%;
-            padding: 0.9rem;
-            border: 1px solid #DDD;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            background-color: var(--white);
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus, 
-        .form-group select:focus, 
-        .form-group textarea:focus {
-            border-color: var(--secondary);
-        }
-
-        .btn-submit {
-            width: 100%;
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--secondary);
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 5rem 5%;
-            text-align: center;
-            margin: 0 5% 4rem 5%;
-            border-radius: 20px;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto 2.5rem auto;
-            font-size: 1.1rem;
-        }
-
-        .btn-cta {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: inline-block;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .btn-cta:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: #1A0E0A;
-            color: rgba(255, 255, 255, 0.6);
-            padding: 3rem 5% 2rem 5%;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer p {
-            margin-top: 1rem;
-        }
-
-        /* RESPONSIVIDADE */
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 8rem;
-                text-align: center;
-            }
-
-            .hero-text p {
-                margin: 0 auto 2rem auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .contact-section {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-light);
-                flex-direction: column;
-                padding: 1.5rem 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-                display: none; /* Controlado via JS */
-            }
-
-            nav.active {
-                display: flex;
-            }
-
-            nav a {
-                margin: 0.8rem 0;
-            }
-        }
-    </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rasp | Restauração e Raspagem de Pisos de Madeira</title>
+
+<meta name="description" content="Especialistas em raspagem, restauração, calafetação e acabamento de pisos de madeira, tacos, assoalhos e decks. Solicite seu orçamento gratuito.">
+
+<meta name="keywords" content="raspagem de piso, restauração de taco, piso de madeira, assoalho, deck de madeira, Bona, Synteko">
+
+<meta name="author" content="Rasp">
+
+<meta name="robots" content="index, follow">
+
+
+<!-- Open Graph -->
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Rasp | Especialistas em Pisos de Madeira">
+
+<meta property="og:description" content="Transformamos pisos antigos em ambientes renovados com acabamento profissional.">
+
+<meta property="og:image" content="img/og-image.webp">
+
+<meta property="og:locale" content="pt_BR">
+
+
+
+<!-- Favicon -->
+
+<link rel="icon" href="img/favicon.png">
+
+
+
+<!-- Fontes -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="style.css">
+
+
 </head>
+
+
 <body>
 
-    <header>
-        <a href="#" class="logo">RASP<span>.</span></a>
-        
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
 
-        <nav id="navMenu">
-            <a href="#servicos">Serviços</a>
-            <a href="#galeria">Projetos</a>
-            <a href="#diferenciais">Por que a Rasp?</a>
-            <a href="#contato" class="btn-header">Pedir Orçamento</a>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Devolvemos a vida e o brilho da sua madeira.</h1>
-            <p>Especialistas em raspagem, restauração e tratamento de pisos, assoalhos, tacos e decks de madeira com acabamento impecável.</p>
-            <div class="hero-buttons">
-                <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
-                <a href="#servicos" class="btn-secondary">Nossos Serviços</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" alt="Piso de madeira restaurado e brilhante">
-        </div>
-    </section>
+<!-- =========================
+HEADER
+========================= -->
 
-    <section class="services" id="servicos">
-        <div class="section-title">
-            <h2>O que fazemos</h2>
-            <p>Soluções completas para instalação, reforma e manutenção de superfícies em madeira pura.</p>
-        </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M6 18h12M6 14h12M6 10h12M3 7l9-4 9 4"/></svg>
-                </div>
-                <h3>Raspagem & Restauração</h3>
-                <p>Remoção de vernizes antigos, nivelamento de tacos e assoalhos, eliminando riscos e imperfeições do tempo.</p>
-            </div>
+<header class="header">
 
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                </div>
-                <h3>Tratamento de Decks</h3>
-                <p>Manutenção preventiva e corretiva para decks externos. Aplicação de produtos resistentes ao sol e à chuva.</p>
-            </div>
 
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                </div>
-                <h3>Aplicação de Resinas</h3>
-                <p>Acabamentos foscos, acetinados ou brilhantes com resinas de alta durabilidade e secagem rápida.</p>
-            </div>
+<div class="container header-container">
 
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                </div>
-                <h3>Instalação e Troca</h3>
-                <p>Colocação de novos pisos, calafetação precisa e substituição de tacos danificados ou soltos.</p>
-            </div>
-        </div>
-    </section>
 
-    <section class="gallery" id="galeria">
-        <div class="section-title">
-            <h2>Nossos Projetos</h2>
-            <p>Confira algumas de nossas transformações em pisos e decks de madeira.</p>
-        </div>
+<a href="#" class="logo">
 
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=600&q=80" alt="Restauração de Piso de Taco">
-                <div class="gallery-info">
-                    <h4>Restauração de Tacos</h4>
-                    <p>Raspagem sem poeira e aplicação de resina acetinada.</p>
-                </div>
-            </div>
+RASP<span>.</span>
 
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Deck Externo Tratado">
-                <div class="gallery-info">
-                    <h4>Deck de Piscina</h4>
-                    <p>Tratamento impermeabilizante contra chuva e raio UV.</p>
-                </div>
-            </div>
+</a>
 
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Assoalho de Madeira Nobre">
-                <div class="gallery-info">
-                    <h4>Assoalho de Cumaru</h4>
-                    <p>Nivelamento e verniz de alta resistência ao tráfego.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="features" id="diferenciais">
-        <div class="section-title">
-            <h2>Por que escolher a Rasp?</h2>
-            <p>Unimos técnicas tradicionais com maquinários modernos para entregar máxima limpeza e durabilidade.</p>
-        </div>
 
-        <div class="features-wrapper">
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>
-                </div>
-                <h4>Mínimo de Poeira</h4>
-                <p>Utilizamos raspadoras modernas com sistema de aspiração integrado.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <h4>Pontualidade</h4>
-                <p>Cumprimento rigoroso dos prazos combinados no orçamento.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h4>Produtos Premium</h4>
-                <p>Trabalhamos apenas com vernizes e resinas de alta performance.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <h4>Mão de Obra Própria</h4>
-                <p>Equipe qualificada e especializada no segmento de madeiras.</p>
-            </div>
-        </div>
-    </section>
+<nav class="nav" id="nav">
 
-    <section class="contact-section" id="contato">
-        <div class="contact-info">
-            <h2>Solicite um Orçamento Rápido</h2>
-            <p>Preencha os dados ao lado ou, se preferir, clique no botão para nos chamar diretamente no WhatsApp.</p>
-            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20um%20orçamento%20com%20a%20Rasp." target="_blank" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
-                Falar pelo WhatsApp
-            </a>
-        </div>
 
-        <form onsubmit="event.preventDefault(); alert('Obrigado! Entraremos em contato em breve.');">
-            <div class="form-group">
-                <label for="name">Seu Nome</label>
-                <input type="text" id="name" placeholder="Ex: Maria Silva" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Telefone / WhatsApp</label>
-                <input type="tel" id="phone" placeholder="(00) 00000-0000" required>
-            </div>
-            <div class="form-group">
-                <label for="service">Serviço de Interesse</label>
-                <select id="service">
-                    <option value="raspagem">Raspagem & Restauração</option>
-                    <option value="deck">Tratamento de Deck</option>
-                    <option value="resina">Aplicação de Resina</option>
-                    <option value="instalacao">Instalação / Troca</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Detalhes do Projeto (Opcional)</label>
-                <textarea id="message" rows="4" placeholder="Tamanho aproximado da área, estado atual do piso..."></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Enviar Mensagem</button>
-        </form>
-    </section>
+<a href="#servicos">
+Serviços
+</a>
 
-    <section class="cta-section">
-        <h2>Pronto para renovar seu ambiente?</h2>
-        <p>Transforme seus pisos e decks com a melhor equipe do mercado.</p>
-        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20um%20orçamento%20com%20a%20Rasp." target="_blank" class="btn-cta">Chamar no WhatsApp</a>
-    </section>
 
-    <footer>
-        <div class="logo" style="color: var(--white);">RASP<span>.</span></div>
-        <p>Raspagem, Restauração e Tratamento de Madeiras.</p>
-        <p style="margin-top: 1.5rem; font-size: 0.8rem;">&copy; 2026 Rasp. Todos os direitos reservados.</p>
-    </footer>
+<a href="#projetos">
+Projetos
+</a>
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+<a href="#sobre">
+Empresa
+</a>
 
-        // Fechar menu ao clicar em qualquer link
-        document.querySelectorAll('#navMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-    </script>
+
+<a href="#faq">
+FAQ
+</a>
+
+
+<a href="#contato">
+Contato
+</a>
+
+
+</nav>
+
+
+
+
+<div class="header-actions">
+
+
+<a href="https://wa.me/5500000000000"
+class="btn-header"
+target="_blank">
+
+Orçamento
+
+</a>
+
+
+</div>
+
+
+
+
+<button class="menu-mobile"
+id="menuMobile"
+aria-label="Abrir menu">
+
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+
+</button>
+
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+<!-- =========================
+HERO
+========================= -->
+
+
+<main>
+
+
+
+<section class="hero" id="inicio">
+
+
+<div class="container hero-grid">
+
+
+
+<div class="hero-content">
+
+
+
+<div class="hero-tag">
+
+★★★★★
+Especialistas em madeira
+
+</div>
+
+
+
+
+<h1>
+
+Devolvemos a beleza original
+do seu piso de madeira.
+
+</h1>
+
+
+
+
+<p>
+
+Raspagem, restauração, calafetação
+e acabamento profissional para tacos,
+assoalhos e decks de madeira.
+
+</p>
+
+
+
+
+<div class="hero-points">
+
+
+<div>
+
+✓ Mais de 15 anos de experiência
+
+</div>
+
+
+<div>
+
+✓ Equipamentos profissionais
+
+</div>
+
+
+<div>
+
+✓ Orçamento sem compromisso
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="hero-buttons">
+
+
+<a href="https://wa.me/5500000000000"
+target="_blank"
+class="btn-primary">
+
+Solicitar orçamento
+
+</a>
+
+
+
+<a href="#projetos"
+class="btn-outline">
+
+Ver projetos
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="hero-image">
+
+
+<img
+
+src="img/hero.webp"
+
+alt="Restauração profissional de piso de madeira"
+
+loading="eager">
+
+
+<div class="hero-card">
+
+
+<strong>
+
++2.000
+
+</strong>
+
+
+<span>
+
+pisos restaurados
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+<!-- =========================
+ESTATÍSTICAS
+========================= -->
+
+
+<section class="stats">
+
+
+<div class="container stats-grid">
+
+
+<div class="stat-item">
+
+<strong data-number="15">
+0
+</strong>
+
+<span>
+Anos de experiência
+</span>
+
+</div>
+
+
+
+<div class="stat-item">
+
+<strong data-number="2000">
+0
+</strong>
+
+<span>
+Projetos realizados
+</span>
+
+</div>
+
+
+
+<div class="stat-item">
+
+<strong data-number="98">
+0
+</strong>
+
+<span>
+Clientes satisfeitos
+</span>
+
+</div>
+
+
+
+<div class="stat-item">
+
+<strong>
+100%
+</strong>
+
+<span>
+Compromisso
+</span>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- =========================
+SERVIÇOS
+========================= -->
+
+
+<section class="services" id="servicos">
+
+
+<div class="container">
+
+
+
+<div class="section-title">
+
+
+<span>
+NOSSOS SERVIÇOS
+</span>
+
+
+<h2>
+Soluções completas para madeira
+</h2>
+
+
+<p>
+Recuperamos, protegemos e valorizamos
+pisos de madeira em residências e empresas.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="services-grid">
+
+
+
+<article class="service-card">
+
+
+<div class="service-icon">
+
+🪵
+
+</div>
+
+
+<h3>
+Raspagem de Piso
+</h3>
+
+
+<p>
+Remoção de vernizes antigos,
+riscos e desgaste da madeira,
+recuperando o aspecto original.
+</p>
+
+
+<a href="#contato">
+Solicitar orçamento →
+</a>
+
+
+</article>
+
+
+
+
+
+<article class="service-card">
+
+
+<div class="service-icon">
+
+✨
+
+</div>
+
+
+<h3>
+Aplicação de Resina
+</h3>
+
+
+<p>
+Acabamentos foscos, acetinados
+ou brilhantes com alta resistência.
+</p>
+
+
+<a href="#contato">
+Solicitar orçamento →
+</a>
+
+
+</article>
+
+
+
+
+
+<article class="service-card">
+
+
+<div class="service-icon">
+
+🏡
+
+</div>
+
+
+<h3>
+Restauração de Assoalho
+</h3>
+
+
+<p>
+Recuperação de pisos antigos,
+tacos e madeiras nobres.
+</p>
+
+
+<a href="#contato">
+Solicitar orçamento →
+</a>
+
+
+</article>
+
+
+
+
+
+<article class="service-card">
+
+
+<div class="service-icon">
+
+🌳
+
+</div>
+
+
+<h3>
+Tratamento de Deck
+</h3>
+
+
+<p>
+Proteção contra sol, chuva,
+umidade e desgaste externo.
+</p>
+
+
+<a href="#contato">
+Solicitar orçamento →
+</a>
+
+
+</article>
+
+
+
+
+
+<article class="service-card">
+
+
+<div class="service-icon">
+
+🛠️
+
+</div>
+
+
+<h3>
+Calafetação
+</h3>
+
+
+<p>
+Correção de frestas entre tacos
+para acabamento uniforme.
+</p>
+
+
+<a href="#contato">
+Solicitar orçamento →
+</a>
+
+
+</article>
+
+
+
+
+
+<article class="service-card">
+
+
+<div class="service-icon">
+
+🏢
+
+</div>
+
+
+<h3>
+Projetos Comerciais
+</h3>
+
+
+<p>
+Atendimento para lojas,
+escritórios e condomínios.
+</p>
+
+
+<a href="#contato">
+Solicitar orçamento →
+</a>
+
+
+</article>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+DIFERENCIAIS
+========================= -->
+
+
+<section class="features">
+
+
+<div class="container">
+
+
+
+<div class="section-title">
+
+
+<span>
+POR QUE ESCOLHER A RASP
+</span>
+
+
+<h2>
+Um acabamento feito para durar
+</h2>
+
+
+</div>
+
+
+
+
+
+
+<div class="features-grid">
+
+
+
+
+
+<div class="feature-card">
+
+
+<div class="feature-icon">
+
+✓
+
+</div>
+
+
+<h3>
+Equipamentos modernos
+</h3>
+
+
+<p>
+Máquinas profissionais para
+melhor acabamento e menos sujeira.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature-card">
+
+
+<div class="feature-icon">
+
+✓
+
+</div>
+
+
+<h3>
+Equipe especializada
+</h3>
+
+
+<p>
+Profissionais preparados para
+cada tipo de madeira.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature-card">
+
+
+<div class="feature-icon">
+
+✓
+
+</div>
+
+
+<h3>
+Produtos premium
+</h3>
+
+
+<p>
+Materiais de alta qualidade
+para maior durabilidade.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature-card">
+
+
+<div class="feature-icon">
+
+✓
+
+</div>
+
+
+<h3>
+Garantia e cuidado
+</h3>
+
+
+<p>
+Compromisso com o resultado
+final do projeto.
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+COMO FUNCIONA
+========================= -->
+
+
+<section class="process">
+
+
+<div class="container">
+
+
+
+<div class="section-title">
+
+
+<span>
+COMO FUNCIONA
+</span>
+
+
+<h2>
+Do orçamento à entrega
+</h2>
+
+
+</div>
+
+
+
+
+
+
+<div class="process-grid">
+
+
+
+<div class="process-item">
+
+<strong>
+01
+</strong>
+
+<h3>
+Contato
+</h3>
+
+<p>
+Você solicita o orçamento
+pelo WhatsApp.
+</p>
+
+</div>
+
+
+
+
+
+<div class="process-item">
+
+<strong>
+02
+</strong>
+
+<h3>
+Avaliação
+</h3>
+
+<p>
+Analisamos o estado da madeira
+e indicamos a solução.
+</p>
+
+</div>
+
+
+
+
+
+<div class="process-item">
+
+<strong>
+03
+</strong>
+
+<h3>
+Execução
+</h3>
+
+<p>
+Realizamos todo o processo
+com segurança.
+</p>
+
+</div>
+
+
+
+
+
+<div class="process-item">
+
+<strong>
+04
+</strong>
+
+<h3>
+Entrega
+</h3>
+
+<p>
+Seu ambiente renovado
+e protegido.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- =========================
+PROJETOS - INÍCIO
+========================= -->
+
+
+<section class="projects" id="projetos">
+
+
+<div class="container">
+
+
+<div class="section-title">
+
+
+<span>
+PORTFÓLIO
+</span>
+
+
+<h2>
+Projetos realizados
+</h2>
+
+
+<p>
+Veja algumas transformações feitas
+pela nossa equipe.
+</p>
+
+
+</div>
+
+
+
+<div class="projects-grid">
+    <!-- =========================
+GALERIA DE PROJETOS
+========================= -->
+
+
+<div class="project-card">
+
+
+<img
+
+src="img/projeto1.webp"
+
+alt="Piso de madeira restaurado"
+
+loading="lazy">
+
+
+<div class="project-info">
+
+<h3>
+Restauração de Taco
+</h3>
+
+
+<p>
+Raspagem completa e aplicação
+de acabamento premium.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="project-card">
+
+
+<img
+
+src="img/projeto2.webp"
+
+alt="Deck restaurado"
+
+loading="lazy">
+
+
+<div class="project-info">
+
+<h3>
+Deck Externo
+</h3>
+
+
+<p>
+Tratamento e proteção contra
+sol e umidade.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="project-card">
+
+
+<img
+
+src="img/projeto3.webp"
+
+alt="Assoalho restaurado"
+
+loading="lazy">
+
+
+<div class="project-info">
+
+<h3>
+Assoalho de Madeira
+</h3>
+
+
+<p>
+Recuperação da madeira original
+com acabamento refinado.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+ANTES E DEPOIS
+========================= -->
+
+
+<section class="before-after">
+
+
+<div class="container">
+
+
+
+<div class="section-title">
+
+
+<span>
+TRANSFORMAÇÕES
+</span>
+
+
+<h2>
+Antes e depois dos nossos serviços
+</h2>
+
+
+<p>
+Veja a diferença que uma restauração
+profissional pode fazer.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="before-grid">
+
+
+
+
+
+<div class="before-card">
+
+
+<div class="before-images">
+
+
+<div>
+
+<span>
+Antes
+</span>
+
+<img
+
+src="img/antes1.webp"
+
+alt="Piso antigo antes da restauração"
+
+loading="lazy">
+
+</div>
+
+
+
+<div>
+
+<span>
+Depois
+</span>
+
+<img
+
+src="img/depois1.webp"
+
+alt="Piso restaurado"
+
+loading="lazy">
+
+</div>
+
+
+
+</div>
+
+
+<h3>
+Restauração completa de piso
+</h3>
+
+
+</div>
+
+
+
+
+
+<div class="before-card">
+
+
+<div class="before-images">
+
+
+<div>
+
+<span>
+Antes
+</span>
+
+<img
+
+src="img/antes2.webp"
+
+alt="Deck antes do tratamento"
+
+loading="lazy">
+
+</div>
+
+
+
+<div>
+
+<span>
+Depois
+</span>
+
+<img
+
+src="img/depois2.webp"
+
+alt="Deck após tratamento"
+
+loading="lazy">
+
+</div>
+
+
+
+</div>
+
+
+<h3>
+Recuperação de deck externo
+</h3>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+DEPOIMENTOS
+========================= -->
+
+
+<section class="testimonials">
+
+
+<div class="container">
+
+
+
+<div class="section-title">
+
+
+<span>
+CLIENTES
+</span>
+
+
+<h2>
+O que nossos clientes dizem
+</h2>
+
+
+</div>
+
+
+
+
+
+<div class="testimonial-grid">
+
+
+
+
+
+<div class="testimonial-card">
+
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+
+<p>
+
+"Meu piso estava muito desgastado.
+A equipe conseguiu recuperar completamente.
+O resultado ficou incrível."
+
+</p>
+
+
+<strong>
+Mariana Oliveira
+</strong>
+
+
+<span>
+Cliente residencial
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="testimonial-card">
+
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+
+<p>
+
+"Serviço organizado, equipe cuidadosa
+e acabamento perfeito. Recomendo."
+
+</p>
+
+
+<strong>
+Carlos Almeida
+</strong>
+
+
+<span>
+Cliente residencial
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="testimonial-card">
+
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+
+<p>
+
+"O deck ficou como novo novamente.
+Excelente trabalho do começo ao fim."
+
+</p>
+
+
+<strong>
+Fernanda Santos
+</strong>
+
+
+<span>
+Cliente residencial
+</span>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+SOBRE A EMPRESA
+========================= -->
+
+
+<section class="about" id="sobre">
+
+
+<div class="container about-grid">
+
+
+
+<div class="about-image">
+
+
+<img
+
+src="img/equipe.webp"
+
+alt="Equipe Rasp"
+
+loading="lazy">
+
+
+</div>
+
+
+
+
+
+<div class="about-content">
+
+
+<span>
+SOBRE A RASP
+</span>
+
+
+<h2>
+Especialistas em valorizar a madeira
+</h2>
+
+
+<p>
+
+Trabalhamos com restauração de pisos
+há anos, unindo experiência, tecnologia
+e cuidado em cada projeto.
+
+</p>
+
+
+<p>
+
+Nosso objetivo é entregar ambientes
+mais bonitos, valorizados e com pisos
+protegidos por muito mais tempo.
+
+</p>
+
+
+
+<ul>
+
+
+<li>
+✓ Atendimento personalizado
+</li>
+
+
+<li>
+✓ Equipe própria especializada
+</li>
+
+
+<li>
+✓ Materiais de alta qualidade
+</li>
+
+
+<li>
+✓ Compromisso com acabamento
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+PRODUTOS
+========================= -->
+
+
+<section class="brands">
+
+
+<div class="container">
+
+
+<div class="section-title">
+
+
+<h2>
+Trabalhamos com produtos profissionais
+</h2>
+
+
+</div>
+
+
+
+
+<div class="brands-grid">
+
+
+<div>
+BONA
+</div>
+
+
+<div>
+SYNTEKO
+</div>
+
+
+<div>
+SAYERLACK
+</div>
+
+
+<div>
+SIKKENS
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+FAQ
+========================= -->
+
+
+<section class="faq" id="faq">
+
+
+<div class="container">
+
+
+
+<div class="section-title">
+
+
+<h2>
+Perguntas frequentes
+</h2>
+
+
+</div>
+
+
+
+
+<div class="faq-list">
+
+
+
+
+
+<div class="faq-item">
+
+
+<button>
+
+Quanto tempo demora uma raspagem?
+
+<span>
++
+</span>
+
+</button>
+
+
+<div class="faq-answer">
+
+<p>
+
+O prazo depende do tamanho da área,
+estado do piso e tipo de acabamento.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="faq-item">
+
+
+<button>
+
+A raspagem faz muita sujeira?
+
+<span>
++
+</span>
+
+</button>
+
+
+<div class="faq-answer">
+
+<p>
+
+Utilizamos equipamentos modernos
+que reduzem bastante a poeira.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="faq-item">
+
+
+<button>
+
+Preciso sair de casa durante o serviço?
+
+<span>
++
+</span>
+
+</button>
+
+
+<div class="faq-answer">
+
+<p>
+
+Depende do serviço realizado.
+Nossa equipe orienta a melhor opção.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+<!-- =========================
+CONTATO / ORÇAMENTO
+========================= -->
+
+
+<section class="contact" id="contato">
+
+
+<div class="container contact-grid">
+
+
+
+<div class="contact-text">
+
+
+<span>
+FALE CONOSCO
+</span>
+
+
+<h2>
+Solicite seu orçamento gratuito
+</h2>
+
+
+<p>
+
+Envie algumas informações sobre seu
+piso e nossa equipe entrará em contato
+para avaliar a melhor solução.
+
+</p>
+
+
+
+<div class="contact-info">
+
+
+<div>
+
+📞
+
+<strong>
+WhatsApp
+</strong>
+
+<br>
+
+(00) 00000-0000
+
+</div>
+
+
+
+<div>
+
+📍
+
+<strong>
+Atendimento
+</strong>
+
+<br>
+
+São Paulo e região
+
+</div>
+
+
+
+<div>
+
+⏰
+
+<strong>
+Horário
+</strong>
+
+<br>
+
+Segunda a sábado
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<form class="quote-form" id="quoteForm">
+
+
+
+<div class="form-group">
+
+
+<label>
+Nome
+</label>
+
+
+<input
+
+type="text"
+
+name="nome"
+
+placeholder="Seu nome"
+
+required>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+WhatsApp
+</label>
+
+
+<input
+
+type="tel"
+
+name="telefone"
+
+placeholder="(00) 00000-0000"
+
+required>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Tipo de serviço
+</label>
+
+
+
+<select name="servico">
+
+
+<option>
+Raspagem de piso
+</option>
+
+
+<option>
+Restauração de taco
+</option>
+
+
+<option>
+Aplicação de resina
+</option>
+
+
+<option>
+Tratamento de deck
+</option>
+
+
+<option>
+Outro serviço
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Mensagem
+</label>
+
+
+<textarea
+
+name="mensagem"
+
+rows="5"
+
+placeholder="Conte um pouco sobre seu projeto">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+<button
+
+type="submit"
+
+class="btn-primary">
+
+Enviar solicitação
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+CTA FINAL
+========================= -->
+
+
+<section class="final-cta">
+
+
+<div class="container">
+
+
+<h2>
+
+Pronto para renovar seu piso?
+
+</h2>
+
+
+<p>
+
+Transforme sua madeira antiga em
+um ambiente elegante novamente.
+
+</p>
+
+
+<a
+
+href="https://wa.me/5500000000000"
+
+target="_blank"
+
+class="btn-primary">
+
+Chamar no WhatsApp
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
+
+<footer class="footer">
+
+
+<div class="container footer-grid">
+
+
+<div>
+
+
+<a href="#" class="logo">
+
+RASP<span>.</span>
+
+</a>
+
+
+<p>
+
+Restauração, raspagem e tratamento
+profissional de pisos de madeira.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<h3>
+Links
+</h3>
+
+
+<a href="#inicio">
+Início
+</a>
+
+
+<a href="#servicos">
+Serviços
+</a>
+
+
+<a href="#projetos">
+Projetos
+</a>
+
+
+<a href="#contato">
+Contato
+</a>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<h3>
+Contato
+</h3>
+
+
+<p>
+WhatsApp: (00) 00000-0000
+</p>
+
+
+<p>
+São Paulo - SP
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="copyright">
+
+
+© 2026 Rasp. Todos os direitos reservados.
+
+
+</div>
+
+
+
+</footer>
+
+
+
+
+
+
+
+<!-- =========================
+WHATSAPP FLUTUANTE
+========================= -->
+
+
+<a
+
+href="https://wa.me/5500000000000"
+
+class="whatsapp-float"
+
+target="_blank"
+
+aria-label="Conversar no WhatsApp">
+
+
+WhatsApp
+
+</a>
+
+
+
+
+
+
+
+<!-- =========================
+VOLTAR AO TOPO
+========================= -->
+
+
+<button
+
+class="back-top"
+
+id="backTop"
+
+aria-label="Voltar ao topo">
+
+↑
+
+</button>
+
+
+
+
+
+
+
+<!-- =========================
+SCHEMA SEO
+========================= -->
+
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"LocalBusiness",
+
+"name":"Rasp",
+
+"description":"Especialistas em raspagem e restauração de pisos de madeira.",
+
+"telephone":"+55 00 00000-0000",
+
+"address":{
+
+"@type":"PostalAddress",
+
+"addressLocality":"São Paulo",
+
+"addressCountry":"BR"
+
+},
+
+"serviceType":[
+
+"Raspagem de piso",
+
+"Restauração de madeira",
+
+"Tratamento de deck"
+
+]
+
+}
+
+</script>
+
+
+
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
 
 </body>
+
 </html>
