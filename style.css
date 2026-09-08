@@ -1,12 +1,13 @@
-/* RESET & VARIAVEIS */
+/* RESET & VARIÁVEIS */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 :root {
   --primary: #2C1810;
   --secondary: #C88A4A;
   --accent: #E5A967;
-  --logo-orange: #E85A4F;
-  --logo-green: #2E5A44;
+  --logo-coral: #EE5B43; /* Cor idêntica à imagem enviada */
+  --logo-green: #28493C; /* Cor verde/escura idêntica à imagem enviada */
   --background: #FBF9F5;
   --white: #ffffff;
   --dark: #1A1A1A;
@@ -15,7 +16,14 @@ html { scroll-behavior: smooth; }
   --radius: 18px;
 }
 
-body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--background); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+body { 
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+  background: var(--background); 
+  color: var(--dark); 
+  line-height: 1.6; 
+  overflow-x: hidden; 
+}
+
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -28,32 +36,143 @@ p { color: var(--gray); }
 
 .container { width: min(1200px, 90%); margin: auto; }
 
-/* LOGO CUSTOMIZADA (Recriando a imagem original) */
-.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-box {
-  width: 52px; height: 52px; background-color: rgb(202, 6, 6); border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; color: white;
-  font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.2rem;
-  line-height: 1; position: relative; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+/* ==========================================================
+   LOGO IDENTICO À IMAGEM FORNECIDA
+   ========================================================== */
+.logo { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  text-decoration: none; 
 }
 
-.logo-text { display: flex; flex-direction: column; justify-content: center; }
-.logo-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.1rem; color: var(--logo-black); letter-spacing: 1px; line-height: 0.9; }
-.logo-subtitle { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.72rem; color: var(--logo-black); letter-spacing: 0.5px; margin-top: 4px; }
+/* Caixa Coral/Laranja com cantos arredondados */
+.logo-box {
+  width: 50px;
+  height: 50px;
+  background-color: var(--logo-coral);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-/* HEADER */
-.header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(251,249,245,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,.05); }
-.header-container { height: 90px; display: flex; align-items: center; justify-content: space-between; }
+/* Subtituição da estrutura do .logo-r por uma LINHA RETA BRANCA */
+.logo-r {
+  position: relative;
+  width: 35px;               /* Comprimento da linha principal */
+  height: 7px;               /* Espessura da linha branca */
+  background-color: white;   /* Transforma a base em uma linha reta branca */
+  border: none;              /* Remove as bordas/caixa antigas */
+  border-radius: 0;
+    top: -12px;         
+    left: -7px;       /* Ajuste de posição para alinhar com a nova linha */
+
+}
+
+/* Arco superior do R (Mantido conforme o seu código) */
+.logo-r::before {
+  content: '';
+  position: absolute;
+  top: 0px;                /* Ajuste de posição para alinhar com a nova linha */
+  right: -5px;
+  width: 21px;
+  height: 14px;
+  border: 7px solid white;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Perna do R apontando para a direita (Mantido conforme o seu código) */
+.logo-r::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 30px;
+  width: 10px;
+  height: 12px;
+  background-color: white;""
+  border-radius: 0 8px 0px 0;
+}
+
+.logo-text { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+}
+
+.logo-title { 
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 900; 
+  font-size: 2.2rem; 
+  color: var(--logo-green); 
+  letter-spacing: 1px; 
+  line-height: 0.8; 
+}
+
+.logo-subtitle { 
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 800; 
+  font-size: 0.68rem; 
+  color: var(--logo-green); 
+  letter-spacing: 0.8px; 
+  margin-top: 5px; 
+}
+
+/* ==========================================================
+   HEADER & NAVEGAÇÃO
+   ========================================================== */
+.header { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  z-index: 1000; 
+  background: rgba(251,249,245,.92); 
+  backdrop-filter: blur(12px); 
+  border-bottom: 1px solid rgba(0,0,0,.05); 
+}
+
+.header-container { 
+  height: 90px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+
 .nav { display: flex; gap: 35px; }
 .nav a { font-weight: 600; font-size: .95rem; transition: .3s; }
 .nav a:hover { color: var(--secondary); }
+
+/* Menu Mobile Ativo */
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background: var(--background);
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    display: none;
+  }
+  .nav.active { display: flex; }
+  .menu-mobile { display: block !important; }
+  .header-actions { display: none; }
+}
+
 .header-actions { display: flex; align-items: center; }
 .btn-header { background: var(--primary); color: white; padding: 14px 28px; border-radius: 50px; font-weight: 700; transition: .3s; }
 .btn-header:hover { background: var(--secondary); }
 .menu-mobile { display: none; border: 0; background: transparent; cursor: pointer; }
 .menu-mobile span { display: block; width: 28px; height: 3px; margin: 5px; background: var(--primary); }
 
-/* HERO */
+/* ==========================================================
+   HERO
+   ========================================================== */
 .hero { padding: 160px 0 100px; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 70px; }
 .hero-tag { display: inline-block; background: rgba(200,138,74,.12); color: var(--secondary); padding: 8px 18px; border-radius: 50px; font-weight: 700; margin-bottom: 25px; }
@@ -69,7 +188,9 @@ p { color: var(--gray); }
 .hero-card { position: absolute; bottom: 25px; left: 25px; background: white; padding: 20px 30px; border-radius: 15px; box-shadow: var(--shadow); }
 .hero-card strong { display: block; font-size: 2rem; color: var(--secondary); }
 
-/* SEÇÕES GERAIS E GRIDS */
+/* ==========================================================
+   SEÇÕES, CARDS E GRIDS
+   ========================================================== */
 .stats { background: var(--primary); padding: 50px 0; }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
 .stat-item strong { display: block; color: var(--accent); font-size: 3rem; font-family: 'Playfair Display', serif; }
@@ -144,5 +265,13 @@ p { color: var(--gray); }
 .footer p, .footer a { color: #888; display: block; margin-bottom: 10px; }
 .copyright { text-align: center; color: #555; border-top: 1px solid #222; padding-top: 30px; font-size: .9rem; }
 
+/* ==========================================================
+   BOTÕES FIXOS & ANIMAÇÕES JS
+   ========================================================== */
 .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; padding: 15px 25px; border-radius: 50px; font-weight: 700; box-shadow: 0 10px 25px rgba(0,0,0,.2); z-index: 99; }
-.back-top { position: fixed; bottom: 30px; left: 30px; width: 45px; height: 45px; background: var(--primary); color: white; border: 0; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 99; }
+.back-top { position: fixed; bottom: 30px; left: 30px; width: 45px; height: 45px; background: var(--primary); color: white; border: 0; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 99; }
+.back-top.active { display: flex; }
+
+/* Classes adicionadas para suporte à animação do script.js */
+.hidden { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+.show { opacity: 1; transform: translateY(0); }

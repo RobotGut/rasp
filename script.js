@@ -1,41 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* =========================
-     MENU MOBILE
-  ========================= */
+  /* MENU MOBILE */
   const menuMobile = document.getElementById("menuMobile");
   const nav = document.getElementById("nav");
 
   if (menuMobile && nav) {
     menuMobile.addEventListener("click", () => nav.classList.toggle("active"));
-
-    /* Fechar menu ao clicar nos links */
     document.querySelectorAll(".nav a").forEach(link => {
       link.addEventListener("click", () => nav.classList.remove("active"));
     });
   }
 
-  /* =========================
-     FAQ ACCORDION
-  ========================= */
+  /* FAQ ACCORDION */
   document.querySelectorAll(".faq-item button").forEach(button => {
     button.addEventListener("click", () => {
       const answer = button.nextElementSibling;
       const icon = button.querySelector("span");
-
       const isActive = answer.classList.toggle("active");
       if (icon) icon.textContent = isActive ? "-" : "+";
     });
   });
 
-  /* =========================
-     BOTÃO VOLTAR AO TOPO & HEADER SCROLL
-  ========================= */
+  /* BOTÃO VOLTAR AO TOPO */
   const backTop = document.getElementById("backTop");
-
   window.addEventListener("scroll", () => {
-    if (backTop) {
-      backTop.classList.toggle("active", window.scrollY > 500);
-    }
+    if (backTop) backTop.classList.toggle("active", window.scrollY > 500);
   });
 
   if (backTop) {
@@ -44,14 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =========================
-     SCROLL SUAVE
-  ========================= */
+  /* SCROLL SUAVE PARA LINKS INTERNOS */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
       const targetId = this.getAttribute("href");
       if (targetId === "#") return;
-
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
@@ -60,21 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* =========================
-     CONTADORES (Interception Observer)
-  ========================= */
+  /* CONTADORES (Intersection Observer) */
   const counters = document.querySelectorAll("[data-number]");
   const statsSection = document.querySelector(".stats");
 
   if (counters.length && statsSection) {
     let started = false;
-
     const startCounters = () => {
       counters.forEach(counter => {
         let current = 0;
         const target = Number(counter.dataset.number);
         const speed = target / 80;
-
         const update = () => {
           current += speed;
           if (current < target) {
@@ -99,60 +80,40 @@ document.addEventListener("DOMContentLoaded", () => {
     statsObserver.observe(statsSection);
   }
 
-  /* =========================
-     FORMULÁRIO WHATSAPP
-  ========================= */
+  /* FORMULÁRIO WHATSAPP */
   const quoteForm = document.getElementById("quoteForm");
-
   if (quoteForm) {
     quoteForm.addEventListener("submit", (e) => {
       e.preventDefault();
-
       const nome = quoteForm.nome.value;
       const telefone = quoteForm.telefone.value;
       const servico = quoteForm.servico.value;
       const mensagem = quoteForm.mensagem.value;
 
-      const texto = `Olá! Gostaria de solicitar um orçamento.
-
-*Nome:* ${nome}
-*Telefone:* ${telefone}
-*Serviço:* ${servico}
-*Detalhes:* ${mensagem}`;
-
-      const numero = "5500000000000"; // Substitua pelo seu número real com DDD
-      const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-
-      window.open(url, "_blank");
+      const texto = `Olá! Gostaria de solicitar um orçamento.\n\n*Nome:* ${nome}\n*Telefone:* ${telefone}\n*Serviço:* ${servico}\n*Detalhes:* ${mensagem}`;
+      const numero = "5500000000000"; 
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, "_blank");
     });
   }
 
-  /* =========================
-     MÁSCARA DE TELEFONE
-  ========================= */
+  /* MÁSCARA TELEFONE */
   const phoneInput = document.querySelector('input[name="telefone"]');
-
   if (phoneInput) {
     phoneInput.addEventListener("input", (e) => {
-      let value = e.target.value.replace(/\D/g, "");
-
-      if (value.length > 11) value = value.substring(0, 11);
-
-      if (value.length > 10) {
-        value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
-      } else if (value.length > 6) {
-        value = value.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
-      } else if (value.length > 2) {
-        value = value.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
+      let v = e.target.value.replace(/\D/g, "");
+      if (v.length > 11) v = v.substring(0, 11);
+      if (v.length > 10) {
+        v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+      } else if (v.length > 5) {
+        v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
+      } else if (v.length > 2) {
+        v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
       }
-
-      e.target.value = value;
+      e.target.value = v;
     });
   }
 
-  /* =========================
-     ANIMAÇÕES NO SCROLL (Observer)
-  ========================= */
+  /* ANIMAÇÃO DE REVELAÇÃO AO ROLAR */
   const animatedElements = document.querySelectorAll(
     ".service-card, .feature-card, .project-card, .testimonial-card, .process-item"
   );
@@ -173,9 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =========================
-     ANO AUTOMÁTICO FOOTER
-  ========================= */
+  /* ANO DINÂMICO NO FOOTER */
   const copyright = document.querySelector(".copyright");
   if (copyright) {
     copyright.innerHTML = `© ${new Date().getFullYear()} Rasp. Todos os direitos reservados.`;
