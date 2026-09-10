@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
+  <!-- CSS Externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,8 +32,6 @@
   <!-- HEADER -->
   <header class="header">
     <div class="container header-container">
-      
-      <!-- LOGO FIEL À IMAGEM -->
       <a href="#" class="logo">
         <div class="logo-box">
           <div class="logo-r"></div>
@@ -53,10 +51,10 @@
       </nav>
 
       <div class="header-actions">
-        <a href="https://wa.me/5500000000000" class="btn-header" target="_blank">Orçamento</a>
+        <a href="https://wa.me/5500000000000" class="btn-header" target="_blank" rel="noopener noreferrer">Orçamento</a>
       </div>
 
-      <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu">
+      <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -64,7 +62,7 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="inicio">
+    <section class="hero hidden" id="inicio">
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-tag">★★★★★ Especialistas em madeira</div>
@@ -76,13 +74,13 @@
             <div>✓ Orçamento sem compromisso</div>
           </div>
           <div class="hero-buttons">
-            <a href="https://wa.me/5500000000000" target="_blank" class="btn-primary">Solicitar orçamento</a>
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="btn-primary">Solicitar orçamento</a>
             <a href="#projetos" class="btn-outline">Ver projetos</a>
           </div>
         </div>
 
         <div class="hero-image">
-          <img src="img/hero.webp" alt="Restauração profissional de piso de madeira" loading="eager">
+          <img src="img/hero.webp" alt="Restauração profissional de piso de madeira em sala residencial" loading="eager">
           <div class="hero-card">
             <strong>+2.000</strong>
             <span>pisos restaurados</span>
@@ -92,23 +90,23 @@
     </section>
 
     <!-- ESTATÍSTICAS -->
-    <section class="stats">
+    <section class="stats hidden">
       <div class="container stats-grid">
         <div class="stat-item"><strong data-number="30">0</strong><span>Anos de experiência</span></div>
         <div class="stat-item"><strong data-number="5000">0</strong><span>Projetos realizados</span></div>
-        <div class="stat-item"><strong data-number="98">0</strong><span>Clientes satisfeitos</span></div>
+        <div class="stat-item"><strong data-number="100">0</strong><span>% Clientes satisfeitos</span></div>
         <div class="stat-item"><strong>100%</strong><span>Compromisso</span></div>
       </div>
     </section>
 
     <!-- SERVIÇOS -->
-    <section class="services" id="servicos">
+    <section class="services hidden" id="servicos">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <span>NOSSOS SERVIÇOS</span>
           <h2>Soluções completas para madeira</h2>
           <p>Recuperamos, protegemos e valorizamos pisos de madeira em residências e empresas.</p>
-        </div>
+        </header>
 
         <div class="services-grid">
           <article class="service-card">
@@ -152,12 +150,12 @@
     </section>
 
     <!-- DIFERENCIAIS -->
-    <section class="features">
+    <section class="features hidden">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <span>POR QUE ESCOLHER A RASP</span>
           <h2>Um acabamento feito para durar</h2>
-        </div>
+        </header>
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon">✓</div>
@@ -184,12 +182,12 @@
     </section>
 
     <!-- COMO FUNCIONA -->
-    <section class="process">
+    <section class="process hidden">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <span>COMO FUNCIONA</span>
           <h2>Do orçamento à entrega</h2>
-        </div>
+        </header>
         <div class="process-grid">
           <div class="process-item"><strong>01</strong><h3>Contato</h3><p>Você solicita o orçamento pelo WhatsApp.</p></div>
           <div class="process-item"><strong>02</strong><h3>Avaliação</h3><p>Analisamos o estado da madeira e indicamos a solução.</p></div>
@@ -200,30 +198,30 @@
     </section>
 
     <!-- PROJETOS -->
-    <section class="projects" id="projetos">
+    <section class="projects hidden" id="projetos">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <span>PORTFÓLIO</span>
           <h2>Projetos realizados</h2>
           <p>Veja algumas transformações feitas pela nossa equipe.</p>
-        </div>
+        </header>
         <div class="projects-grid">
           <div class="project-card">
-            <img src="img/projeto1.webp" alt="Piso de madeira restaurado" loading="lazy">
+            <img src="img/projeto1.webp" alt="Piso de taco de madeira restaurado com acabamento acetinado" loading="lazy">
             <div class="project-info">
               <h3>Restauração de Taco</h3>
               <p>Raspagem completa e aplicação de acabamento premium.</p>
             </div>
           </div>
           <div class="project-card">
-            <img src="img/projeto2.webp" alt="Deck restaurado" loading="lazy">
+            <img src="img/projeto2.webp" alt="Deck de madeira externo tratado contra sol e chuva" loading="lazy">
             <div class="project-info">
               <h3>Deck Externo</h3>
               <p>Tratamento e proteção contra sol e umidade.</p>
             </div>
           </div>
           <div class="project-card">
-            <img src="img/projeto3.webp" alt="Assoalho restaurado" loading="lazy">
+            <img src="img/projeto3.webp" alt="Assoalho de madeira nobre totalmente renovado" loading="lazy">
             <div class="project-info">
               <h3>Assoalho de Madeira</h3>
               <p>Recuperação da madeira original com acabamento refinado.</p>
@@ -234,25 +232,25 @@
     </section>
 
     <!-- ANTES E DEPOIS -->
-    <section class="before-after">
+    <section class="before-after hidden">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <span>TRANSFORMAÇÕES</span>
           <h2>Antes e depois dos nossos serviços</h2>
           <p>Veja a diferença que uma restauração profissional pode fazer.</p>
-        </div>
+        </header>
         <div class="before-grid">
           <div class="before-card">
             <div class="before-images">
-              <div><span>Antes</span><img src="img/antes1.webp" alt="Piso antigo antes da restauração" loading="lazy"></div>
-              <div><span>Depois</span><img src="img/depois1.webp" alt="Piso restaurado" loading="lazy"></div>
+              <div><span>Antes</span><img src="img/antes1.webp" alt="Piso de madeira antigo, riscado e opaco antes da restauração" loading="lazy"></div>
+              <div><span>Depois</span><img src="img/depois1.webp" alt="Piso de madeira raspado e com resina brilhante restaurado" loading="lazy"></div>
             </div>
             <h3>Restauração completa de piso</h3>
           </div>
           <div class="before-card">
             <div class="before-images">
-              <div><span>Antes</span><img src="img/antes2.webp" alt="Deck antes do tratamento" loading="lazy"></div>
-              <div><span>Depois</span><img src="img/depois2.webp" alt="Deck após tratamento" loading="lazy"></div>
+              <div><span>Antes</span><img src="img/antes2.webp" alt="Deck externo acinzentado pelo sol antes do tratamento" loading="lazy"></div>
+              <div><span>Depois</span><img src="img/depois2.webp" alt="Deck externo revitalizado após tratamento de madeira" loading="lazy"></div>
             </div>
             <h3>Recuperação de deck externo</h3>
           </div>
@@ -261,12 +259,12 @@
     </section>
 
     <!-- DEPOIMENTOS -->
-    <section class="testimonials">
+    <section class="testimonials hidden">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <span>CLIENTES</span>
           <h2>O que nossos clientes dizem</h2>
-        </div>
+        </header>
         <div class="testimonial-grid">
           <div class="testimonial-card">
             <div class="stars">★★★★★</div>
@@ -291,10 +289,10 @@
     </section>
 
     <!-- SOBRE A EMPRESA -->
-    <section class="about" id="sobre">
+    <section class="about hidden" id="sobre">
       <div class="container about-grid">
         <div class="about-image">
-          <img src="img/equipe.webp" alt="Equipe Rasp" loading="lazy">
+          <img src="img/equipe.webp" alt="Equipe de especialistas da Rasp realizando restauração de piso" loading="lazy">
         </div>
         <div class="about-content">
           <span>SOBRE A RASP</span>
@@ -312,11 +310,11 @@
     </section>
 
     <!-- MARCAS -->
-    <section class="brands">
+    <section class="brands hidden">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <h2>Trabalhamos com produtos profissionais</h2>
-        </div>
+        </header>
         <div class="brands-grid">
           <div>BONA</div>
           <div>SYNTEKO</div>
@@ -327,22 +325,22 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq" id="faq">
+    <section class="faq hidden" id="faq">
       <div class="container">
-        <div class="section-title">
+        <header class="section-title">
           <h2>Perguntas frequentes</h2>
-        </div>
+        </header>
         <div class="faq-list">
           <div class="faq-item">
-            <button>Quanto tempo demora uma raspagem? <span>+</span></button>
+            <button type="button">Quanto tempo demora uma raspagem? <span>+</span></button>
             <div class="faq-answer"><p>O prazo depende do tamanho da área, estado do piso e tipo de acabamento.</p></div>
           </div>
           <div class="faq-item">
-            <button>A raspagem faz muita sujeira? <span>+</span></button>
+            <button type="button">A raspagem faz muita sujeira? <span>+</span></button>
             <div class="faq-answer"><p>Utilizamos equipamentos modernos que reduzem bastante a poeira.</p></div>
           </div>
           <div class="faq-item">
-            <button>Preciso sair de casa durante o serviço? <span>+</span></button>
+            <button type="button">Preciso sair de casa durante o serviço? <span>+</span></button>
             <div class="faq-answer"><p>Depende do serviço realizado. Nossa equipe orienta a melhor opção.</p></div>
           </div>
         </div>
@@ -350,7 +348,7 @@
     </section>
 
     <!-- CONTATO -->
-    <section class="contact" id="contato">
+    <section class="contact hidden" id="contato">
       <div class="container contact-grid">
         <div class="contact-text">
           <span>FALE CONOSCO</span>
@@ -365,16 +363,16 @@
 
         <form class="quote-form" id="quoteForm">
           <div class="form-group">
-            <label>Nome</label>
-            <input type="text" name="nome" placeholder="Seu nome" required>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
           </div>
           <div class="form-group">
-            <label>WhatsApp</label>
-            <input type="tel" name="telefone" placeholder="(00) 00000-0000" required>
+            <label for="telefone">WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
           </div>
           <div class="form-group">
-            <label>Tipo de serviço</label>
-            <select name="servico">
+            <label for="servico">Tipo de serviço</label>
+            <select id="servico" name="servico">
               <option>Raspagem de piso</option>
               <option>Restauração de taco</option>
               <option>Aplicação de resina</option>
@@ -383,20 +381,20 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Mensagem</label>
-            <textarea name="mensagem" rows="5" placeholder="Conte um pouco sobre seu projeto"></textarea>
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte um pouco sobre seu projeto"></textarea>
           </div>
-          <button type="submit" class="btn-primary">Enviar solicitação</button>
+          <button type="submit" class="btn-primary">Enviar solicitação via WhatsApp</button>
         </form>
       </div>
     </section>
 
     <!-- CTA FINAL -->
-    <section class="final-cta">
+    <section class="final-cta hidden">
       <div class="container">
         <h2>Pronto para renovar seu piso?</h2>
         <p>Transforme sua madeira antiga em um ambiente elegante novamente.</p>
-        <a href="https://wa.me/5500000000000" target="_blank" class="btn-primary">Chamar no WhatsApp</a>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="btn-primary">Chamar no WhatsApp</a>
       </div>
     </section>
   </main>
@@ -410,8 +408,8 @@
             <div class="logo-r"></div>
           </div>
           <div class="logo-text">
-            <span class="logo-title">RASP</span>
-            <span class="logo-subtitle">PISOS DE MADEIRA</span>
+            <span class="logo-title" style="color: white;">RASP</span>
+            <span class="logo-subtitle" style="color: white;">PISOS DE MADEIRA</span>
           </div>
         </a>
         <p style="margin-top: 15px;">Restauração, raspagem e tratamento profissional de pisos de madeira.</p>
@@ -433,9 +431,10 @@
   </footer>
 
   <!-- BOTÕES FIXOS -->
-  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" aria-label="Conversar no WhatsApp">WhatsApp</a>
+  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">WhatsApp</a>
   <button class="back-top" id="backTop" aria-label="Voltar ao topo">↑</button>
 
+  <!-- JavaScript Externo -->
   <script src="script.js"></script>
 </body>
 </html>

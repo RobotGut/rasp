@@ -1,142 +1,135 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* MENU MOBILE */
+  /* CONTROLADOR DA SIDEBAR MOBILE */
   const menuMobile = document.getElementById("menuMobile");
-  const nav = document.getElementById("nav");
+  const sidebarMobile = document.getElementById("sidebarMobile");
+  const sidebarOverlay = document.getElementById("sidebarOverlay");
+  const sidebarClose = document.getElementById("sidebarClose");
+  const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
 
-  if (menuMobile && nav) {
-    menuMobile.addEventListener("click", () => nav.classList.toggle("active"));
-    document.querySelectorAll(".nav a").forEach(link => {
-      link.addEventListener("click", () => nav.classList.remove("active"));
-    });
+  function openSidebar() {
+    sidebarMobile.classList.add("active");
+    sidebarOverlay.classList.add("active");
+    menuMobile.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden"; // Impede a rolagem do fundo
   }
+
+  function closeSidebar() {
+    sidebarMobile.classList.remove("active");
+    sidebarOverlay.classList.remove("active");
+    menuMobile.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = ""; // Libera a rolagem
+  }
+
+  if (menuMobile) {
+    menuMobile.addEventListener("click", openSidebar);
+  }
+
+  if (sidebarClose) {
+    sidebarClose.addEventListener("click", closeSidebar);
+  }
+
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener("click", closeSidebar);
+  }
+
+  // Fecha a sidebar ao clicar em qualquer link de navegação
+  sidebarLinks.forEach(link => {
+    link.addEventListener("click", closeSidebar);
+  });
 
   /* FAQ ACCORDION */
   document.querySelectorAll(".faq-item button").forEach(button => {
     button.addEventListener("click", () => {
       const answer = button.nextElementSibling;
       const icon = button.querySelector("span");
-      const isActive = answer.classList.toggle("active");
-      if (icon) icon.textContent = isActive ? "-" : "+";
+
+      if (answer.classList.contains("active")) {
+        answer.classList.remove("active");
+        icon.textContent = "+";
+      } else {
+        document.querySelectorAll(".faq-answer").forEach(ans => ans.classList.remove("active"));
+        document.querySelectorAll(".faq-item button span").forEach(sp => sp.textContent = "+");
+
+        answer.classList.add("active");
+        icon.textContent = "-";
+      }
     });
   });
 
   /* BOTÃO VOLTAR AO TOPO */
   const backTop = document.getElementById("backTop");
-  window.addEventListener("scroll", () => {
-    if (backTop) backTop.classList.toggle("active", window.scrollY > 500);
-  });
-
   if (backTop) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backTop.classList.add("active");
+      } else {
+        backTop.classList.remove("active");
+      }
+    });
+
     backTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  /* SCROLL SUAVE PARA LINKS INTERNOS */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      const targetId = this.getAttribute("href");
-      if (targetId === "#") return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    });
-  });
-
-  /* CONTADORES (Intersection Observer) */
-  const counters = document.querySelectorAll("[data-number]");
-  const statsSection = document.querySelector(".stats");
-
-  if (counters.length && statsSection) {
-    let started = false;
-    const startCounters = () => {
-      counters.forEach(counter => {
-        let current = 0;
-        const target = Number(counter.dataset.number);
-        const speed = target / 80;
-        const update = () => {
-          current += speed;
-          if (current < target) {
-            counter.textContent = Math.floor(current);
-            requestAnimationFrame(update);
-          } else {
-            counter.textContent = target;
-          }
-        };
-        update();
-      });
-    };
-
-    const statsObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !started) {
-        started = true;
-        startCounters();
-        statsObserver.disconnect();
-      }
-    }, { threshold: 0.3 });
-
-    statsObserver.observe(statsSection);
-  }
-
-  /* FORMULÁRIO WHATSAPP */
+  /* ENVIO DE FORMULÁRIO VIA WHATSAPP */
   const quoteForm = document.getElementById("quoteForm");
   if (quoteForm) {
     quoteForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const nome = quoteForm.nome.value;
-      const telefone = quoteForm.telefone.value;
-      const servico = quoteForm.servico.value;
-      const mensagem = quoteForm.mensagem.value;
+      
+      const nome = document.getElementById("nome").value;
+      const telefone = document.getElementById("telefone").value;
+      const servico = document.getElementById("servico").value;
+      const mensagem = document.getElementById("mensagem").value;
 
-      const texto = `Olá! Gostaria de solicitar um orçamento.\n\n*Nome:* ${nome}\n*Telefone:* ${telefone}\n*Serviço:* ${servico}\n*Detalhes:* ${mensagem}`;
-      const numero = "5500000000000"; 
-      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, "_blank");
+      const textoWhatsApp = `Olá! Gostaria de solicitar um orçamento.\n\n*Nome:* ${nome}\n*Telefone:* ${telefone}\n*Serviço:* ${servico}\n*Mensagem:* ${mensagem}`;
+      const urlWhatsApp = `https://wa.me/5500000000000?text=${encodeURIComponent(textoWhatsApp)}`;
+
+      window.open(urlWhatsApp, "_blank");
     });
   }
 
-  /* MÁSCARA TELEFONE */
-  const phoneInput = document.querySelector('input[name="telefone"]');
-  if (phoneInput) {
-    phoneInput.addEventListener("input", (e) => {
-      let v = e.target.value.replace(/\D/g, "");
-      if (v.length > 11) v = v.substring(0, 11);
-      if (v.length > 10) {
-        v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
-      } else if (v.length > 5) {
-        v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, "($1) $2-$3");
-      } else if (v.length > 2) {
-        v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
+  /* ANIMAÇÃO DE ELEMENTOS AO ROLAR (SCROLL REVEAL) */
+  const hiddenElements = document.querySelectorAll(".hidden");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
       }
-      e.target.value = v;
     });
-  }
+  }, { threshold: 0.1 });
 
-  /* ANIMAÇÃO DE REVELAÇÃO AO ROLAR */
-  const animatedElements = document.querySelectorAll(
-    ".service-card, .feature-card, .project-card, .testimonial-card, .process-item"
-  );
+  hiddenElements.forEach(el => observer.observe(el));
 
-  if (animatedElements.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
+  /* CONTADORES ANIMADOS DE ESTATÍSTICAS */
+  const statsSection = document.querySelector(".stats");
+  const numbers = document.querySelectorAll("[data-number]");
+  let animated = false;
 
-    animatedElements.forEach(element => {
-      element.classList.add("hidden");
-      observer.observe(element);
-    });
-  }
+  if (statsSection) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !animated) {
+        animated = true;
+        numbers.forEach(num => {
+          const target = +num.getAttribute("data-number");
+          let count = 0;
+          const increment = target / 50;
 
-  /* ANO DINÂMICO NO FOOTER */
-  const copyright = document.querySelector(".copyright");
-  if (copyright) {
-    copyright.innerHTML = `© ${new Date().getFullYear()} Rasp. Todos os direitos reservados.`;
+          const updateCount = () => {
+            count += increment;
+            if (count < target) {
+              num.innerText = Math.ceil(count);
+              setTimeout(updateCount, 30);
+            } else {
+              num.innerText = target;
+            }
+          };
+          updateCount();
+        });
+      }
+    }, { threshold: 0.5 });
+
+    statsObserver.observe(statsSection);
   }
 });

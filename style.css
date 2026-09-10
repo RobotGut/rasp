@@ -67,7 +67,7 @@ p { color: var(--gray); }
   border: none;              /* Remove as bordas/caixa antigas */
   border-radius: 0;
     top: -12px;         
-    left: -7px;       /* Ajuste de posição para alinhar com a nova linha */
+    left: -8px;       /* Ajuste de posição para alinhar com a nova linha */
 
 }
 
@@ -75,9 +75,9 @@ p { color: var(--gray); }
 .logo-r::before {
   content: '';
   position: absolute;
-  top: 0px;                /* Ajuste de posição para alinhar com a nova linha */
-  right: -5px;
-  width: 21px;
+  top: -0.001px;                /* Ajuste de posição para alinhar com a nova linha */
+  right: -7px;
+  width: 20px;
   height: 14px;
   border: 7px solid white;
   border-left: none;
@@ -89,8 +89,8 @@ p { color: var(--gray); }
   content: '';
   position: absolute;
   bottom: -30px;
-  left: 30px;
-  width: 10px;
+  left: 34px;
+  width: 8.5px;
   height: 12px;
   background-color: white;
   border-radius: 0 8px 0px 0;
@@ -106,7 +106,7 @@ p { color: var(--gray); }
   font-family: 'Montserrat', sans-serif; 
   font-weight: 900; 
   font-size: 2.2rem; 
-  color: var(--logo-green); 
+  color: var(--logo-dark); 
   letter-spacing: 1px; 
   line-height: 0.8; 
 }
@@ -115,7 +115,7 @@ p { color: var(--gray); }
   font-family: 'Montserrat', sans-serif; 
   font-weight: 800; 
   font-size: 0.68rem; 
-  color: var(--logo-green); 
+  color: var(--logo-dark); 
   letter-spacing: 0.8px; 
   margin-top: 5px; 
 }
