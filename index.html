@@ -60,6 +60,31 @@
     </div>
   </header>
 
+  <!-- SIDEBAR MOBILE -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar-mobile" id="sidebarMobile" aria-hidden="true">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-title">RASP</span>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Fechar menu">&times;</button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Empresa</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+    </div>
+  </aside>
+
   <main>
     <!-- HERO -->
     <section class="hero hidden" id="inicio">
@@ -92,10 +117,10 @@
     <!-- ESTATÍSTICAS -->
     <section class="stats hidden">
       <div class="container stats-grid">
-        <div class="stat-item"><strong data-number="30">0</strong><span>Anos de experiência</span></div>
-        <div class="stat-item"><strong data-number="5000">0</strong><span>Projetos realizados</span></div>
-        <div class="stat-item"><strong data-number="100">0</strong><span>% Clientes satisfeitos</span></div>
-        <div class="stat-item"><strong>100%</strong><span>Compromisso</span></div>
+        <div class="stat-item"><strong data-number="30" data-prefix="<span class='symbol'>+</span>">0</strong><span>Anos de experiência</span></div>
+        <div class="stat-item"><strong data-number="5000" data-prefix="<span class='symbol'>+</span>">0</strong><span>Projetos realizados</span></div>
+        <div class="stat-item"><strong data-number="100" data-suffix="<span class='symbol'>%</span>">0</strong><span>Clientes satisfeitos</span></div>
+        <div class="stat-item"><strong data-number="100" data-suffix="<span class='symbol'>%</span>">0</strong><span>Compromisso</span></div>
       </div>
     </section>
 
@@ -386,25 +411,27 @@
         </a>
         <p style="margin-top: 15px;">Restauração, raspagem e tratamento profissional de pisos de madeira.</p>
       </div>
-      <div class="footer-container">
-        <h3>Institucional</h3>
-        <ul>
-          <li><a href="Institucional/index.html">Sobre Nós e <br> Termos de Uso</a></li>
-        </ul>
-      </div>
+
       <div>
         <h3>Contato</h3>
-        <p><i class="fas fa-envelope"></i> contato@suaempresa.com</p>
+        <p>rasp@rasp.com</p>
         <p>WhatsApp: (00) 00000-0000</p>
         <p>São Paulo - SP</p>
       </div>
+
+      <div class="footer-container">
+        <h3>Institucional</h3>
+        <ul>
+          <li><a href="institucional/index.html">Sobre Nós e <br> Termos de Uso</a></li>
+        </ul>
+      </div>
+
     </div>
     <div class="copyright">© 2026 Rasp. Todos os direitos reservados.</div>
   </footer>
 
   <!-- BOTÕES FIXOS -->
   <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">WhatsApp</a>
-  <button class="back-top" id="backTop" aria-label="Voltar ao topo">↑</button>
 
   <!-- JavaScript Externo -->
   <script src="script.js"></script>

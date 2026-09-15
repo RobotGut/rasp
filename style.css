@@ -354,6 +354,16 @@ p {
   font-family: 'Playfair Display', serif; 
 }
 
+/* ESTILO EXCLUSIVO PARA OS SÍMBOLOS (+ e %) */
+.stat-item strong .symbol {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.85em;
+  color: var(--accent); /* Cor igual à dos números */
+  display: inline-block;
+  margin: 0 2px;
+}
+
 .stat-item span { 
   color: rgba(255,255,255,.8); 
   font-weight: 600; 
@@ -651,7 +661,7 @@ p {
   transition: .3s; 
 }
 
-/* NOVO DESIGN DO BOTÃO DO FORMULÁRIO (WHATSAPP) */
+/* BOTÃO DO FORMULÁRIO (WHATSAPP) */
 .btn-whatsapp-form {
   width: 100%;
   background-color: #23a653;
@@ -697,6 +707,7 @@ p {
   margin-bottom: 30px; 
 }
 
+/* FOOTER */
 .footer { 
   background: #111; 
   color: white; 
@@ -708,12 +719,23 @@ p {
   grid-template-columns: 2fr 1fr 1fr; 
   gap: 50px; 
   margin-bottom: 50px; 
+  align-items: start;
+}
+
+.footer .logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer .logo-box {
+  margin: 0;
 }
 
 .footer h3 { 
   color: white; 
   margin-bottom: 20px; 
   font-size: 1.2rem; 
+  line-height: 1.2;
 }
 
 .footer p, .footer a { 
@@ -742,28 +764,6 @@ p {
   z-index: 99; 
 }
 
-.back-top { 
-  position: fixed; 
-  bottom: 30px; 
-  left: 20px; 
-  width: 45px; 
-  height: 45px; 
-  background: var(--primary); 
-  color: white; 
-  border: 0; 
-  border-radius: 50%; 
-  cursor: pointer; 
-  display: none; 
-  align-items: center; 
-  justify-content: center; 
-  font-size: 1.2rem; 
-  z-index: 99; 
-}
-
-.back-top.active { 
-  display: flex; 
-}
-
 .hidden { 
   opacity: 0; 
   transform: translateY(30px); 
@@ -775,9 +775,7 @@ p {
   transform: translateY(0); 
 }
 
-/* ==========================================================
-   REGRAS RESPONSIVAS (TABLETS E CELULARES PEQUENOS)
-   ========================================================== */
+/* RESPONSIVIDADE */
 @media (max-width: 992px) {
   .hero-grid, 
   .about-grid, 
@@ -865,11 +863,90 @@ p {
     bottom: 20px; 
     right: 15px; 
   }
+}
 
-  .back-top { 
-    width: 40px; 
-    height: 40px; 
-    bottom: 20px; 
-    left: 15px; 
-  }
+/* SIDEBAR E OVERLAY */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-mobile {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+}
+
+.sidebar-mobile.active {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-nav a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  transition: color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  color: var(--primary, #d97706);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.sidebar-footer .btn-primary {
+  display: block;
+  text-align: center;
+  width: 100%;
 }
